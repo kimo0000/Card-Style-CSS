@@ -1,0 +1,168 @@
+*, ::before, ::after {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    border: none;
+    outline: none;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    background-color: #f6f6f6;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+ul {
+    list-style: none;
+}
+
+.card {
+    width: 280px;
+    height: 360px;
+    position: relative;
+    overflow: hidden;
+    border-radius: 12px;
+}
+
+.card::before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 0;
+    height: 0;
+    background-color: rgba(255,255,255, .3);
+    opacity: 0;
+    z-index: 1;
+    transition: all .5s;
+}
+
+.card:hover::before {
+  animation: flashing .5s;
+}
+
+@keyframes flashing {
+    0%, 30% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+        width: 150%;
+        height: 150%;
+    }
+}
+
+.card img {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    transition: .3s;
+}
+
+.card:hover img {
+    transform: rotate(4deg) scale(1.1);
+
+}
+
+.card .card_content {
+    position: absolute;
+    width: 100%;
+    height: 45%;
+    bottom: 0;
+    transform: translate(5%, 65%);
+    color: #fff;
+    transition: .3s;
+}
+
+.card .card_content::before {
+    content: "";
+    position: absolute;
+    width: 110%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background-image: linear-gradient(to left, rgba(0,0,0, .9), rgba(0,0,0, .4));
+    filter: blur(20px);
+}
+
+.card:hover .card_content {
+    transform: translate(5%, -5%);
+}
+
+.card .card_content p {
+    width: 80%;
+    opacity: 0;
+}
+
+.card:hover .card_content p {
+    opacity: 1;
+}
+
+.card .card_content .btn_see {
+    position: absolute;
+    bottom: 0;
+    right: 30px;
+    padding: 5px 8px;
+    background-color: yellowgreen;
+    font-weight: 900;
+    cursor: pointer;
+    border-radius: 4px;
+    border-top-left-radius: 12px;
+    border-bottom-right-radius: 12px;
+    transition: .3s;
+}
+
+.card .card_content .btn_see:hover {
+    background-color: rgba(0,0,0, .9);
+    border: 1px solid #fff;
+    color: #fff;
+}
+
+.card .card_list {
+    position: absolute;
+    right: 15px;
+    top: 15px;
+    transform: translateX(50px);
+    opacity: 0;
+    transition: .3s linear;
+}
+
+.card:hover .card_list {
+    transform: translateX(0px);
+    opacity: 1;
+}
+
+.card .card_list li {
+    margin: 0 0 10px;
+    cursor: pointer;
+    width: 30px;
+    height: 30px;
+    background-color: #fff;
+    border-radius: 50%;
+    text-align: center;
+    line-height: 30px;
+    transition: .3s;
+}
+
+.card .card_list li:hover {
+    background-color: yellow;
+    margin-left: -5px;
+}
+
+.card .card_list li i {
+    font-size: 18px;
+    font-weight: bold;
+}
+
+
+
+
+
